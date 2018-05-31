@@ -1,7 +1,9 @@
 class Empoyee():
 
-# This time we are all about Regular methods, Class methods and Static Methods
-#  
+#  How class methods can be used a new Constructor
+# Take for instance if we get the data about a new employee in the form 
+# Jason-Bourn-40000, John-Doe-50000, Steve-Stoned-60000, Jane-Doe-50000
+ 
     num_of_emps = 0
     raise_ammount = 1.02
 
@@ -13,7 +15,6 @@ class Empoyee():
         
         Empoyee.num_of_emps += 1 
 
-# Regular Method : it has (self) (instance) as the first argument
     def fullname(self): 
         return '{} {}'.format(self.first, self.last)
 
@@ -23,7 +24,6 @@ class Empoyee():
     def apply_raise2(self):
         self.pay = int(self.pay * Empoyee.raise_ammount)
 
-# Class Method : To have a (class) as the first argument we use a decorator @staticmethod before the method 
     @staticmethod
     def set_raise_amt(cls, amount):
         cls.raise_ammount = amount
@@ -32,35 +32,23 @@ emp1 = Empoyee('Kallol', 'Biswas', 40000)
 emp2 = Empoyee('Corey', 'Schafer', 50000)
 emp3 = Empoyee('Test', 'User', 60000)
 
-# this will create some problems in the long run if we are not careful.
-# we have decided that emp1 will have an explicit value of raise_ammount
-emp1.raise_ammount = 1.55
-print(Empoyee.raise_ammount)
-print(emp1.raise_ammount)
-print(emp2.raise_ammount)
-print(emp3.raise_ammount)
-print('------------------------------')
-# calling a Class Method to change the Class Variable
-Empoyee.set_raise_amt(Empoyee, 1.33) 
-print(Empoyee.raise_ammount) 
-# Can you see the problem ... since we had set emp1.raise_ammount we have 
-# a Instance Variable value and not Class Variable value when the Class Variable is changed
-print(emp1.raise_ammount)
-print(emp2.raise_ammount)
-print(emp3.raise_ammount)
-print('------------------------------')
-emp1.raise_ammount = Empoyee.raise_ammount
-print(emp1.raise_ammount)
-print('------------------------------')
-# We see that the Class Variable being available to an instance explicitely can cause a bit of confusion
-# if we dont pay attention  
-print(emp1.__dict__)
-print('------------------------------')
-print(emp2.__dict__)
-print('------------------------------')
 
-# Summary: So the difference bet. Class method and Regular method is what they accept as their first arg.
-# got some intro go decorators ... @staticmethod and basic conventions like "self" and "cls" we can use 
-# any word in their places, but its cleaner to stick to the convention. Tip: we cant use the word "class"
-# instead of "cls". because "class" is a unique word for Python
-# 
+# If we were to create Employee instances out of the THAT data we would have to do 
+# something like set them to variables
+emp_str1 = 'Jason-Bourn-40000'
+emp_str2 = 'John-Doe-50000'
+emp_str3 = 'Steve-Stoned-60000'
+emp_str4 = 'Jane-Doe-50000'
+
+# split the string 
+first, last, pay = emp_str1.split('-')
+
+# make new Employee with them
+emp4 = Empoyee(first, last, pay)
+
+# Test
+print(emp4.__dict__)
+
+# Troublesome and accident prone, Automation is the answer.
+
+ 
