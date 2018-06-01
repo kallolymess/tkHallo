@@ -27,14 +27,37 @@ class Developer(Employee):
 # This is equivalent to Employee.__init__(self, first, last, pay)
         self.prog_lang = prog_lang
 
+class Manager(Employee):
+    def __init__(self, first, last, pay, employees=None):
+        super().__init__(first, last, pay)
+        if employees is None:
+            self.employees = []
+        else:
+            self.employees = employees
+
+    def add_emp(self, emp):
+        if emp not in self.employees:
+            self.employees.append(emp)
+            
+    def remove_emp(self, emp):
+        if emp in self.employees:
+            self.employees.remove(emp)
+
+    def print_emps(self):
+        for emp in self.employees:
+            print('--> ', emp.fullname())
+
 # Test Subclassing
 emp1 = Developer('Kallol', 'Biswas', 40000, 'python')
 emp2 = Developer('Corey', 'Schafer', 50000, 'Java')
 emp3 = Employee('Dave', 'Dey', 60000)
+            
+mgr_1 = Manager('Trudy', 'Manager', 80000, [emp1])
 
-print(emp1.pay)
-emp1.apply_raise()
-print(emp1.fullname())
-print(emp1.pay)
-
-print(emp1.__dict__)
+print(mgr_1.email)
+mgr_1.add_emp(emp2)
+mgr_1.add_emp(emp3)
+mgr_1.print_emps()
+print('-------')
+mgr_1.remove_emp(emp3)
+mgr_1.print_emps()
