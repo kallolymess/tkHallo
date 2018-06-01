@@ -18,50 +18,23 @@ class Employee:
 
 # We can see that just this will fully create a subclass
 class Developer(Employee):
-    pass
+    raise_ammount = 1.1
+
+# Creating the constructor for the Subclass, and passing the 
+# class variables to the super class, in this case to class Employee 
+    def __init__(self, first, last, pay, prog_lang):
+        super().__init__(first, last, pay)
+# This is equivalent to Employee.__init__(self, first, last, pay)
+        self.prog_lang = prog_lang
 
 # Test Subclassing
-emp1 = Developer('Kallol', 'Biswas', 40000)
-emp2 = Developer('Corey', 'Schafer', 50000)
+emp1 = Developer('Kallol', 'Biswas', 40000, 'python')
+emp2 = Developer('Corey', 'Schafer', 50000, 'Java')
 emp3 = Employee('Dave', 'Dey', 60000)
 
+print(emp1.pay)
+emp1.apply_raise()
 print(emp1.fullname())
-print(emp2.fullname())
-print(emp3.fullname())
+print(emp1.pay)
 
-#here is a Pretty handy Python function help()
-print(help(Developer))
-"""
-Help on class Developer in module __main__:
-
-class Developer(Employee)
- |  # We can see that just this will fully create a subclass
- |
- |  Method resolution order:
- |      Developer
- |      Employee
- |      builtins.object
- |
- |  Methods inherited from Employee:
- |
- |  __init__(self, first, last, pay)
- |      Initialize self.  See help(type(self)) for accurate signature.
- |
- |  apply_raise(self)
- |
- |  fullname(self)
- |
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from Employee:
- |
- |  __dict__
- |      dictionary for instance variables (if defined)
- |
- |  __weakref__
- |      list of weak references to the object (if defined)
- |
- |  ----------------------------------------------------------------------
- |  Data and other attributes inherited from Employee:
- |
- |  raise_ammount = 1.02
-"""
+print(emp1.__dict__)
