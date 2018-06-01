@@ -61,3 +61,11 @@ mgr_1.print_emps()
 print('-------')
 mgr_1.remove_emp(emp3)
 mgr_1.print_emps()
+
+print(isinstance(mgr_1, Employee))
+print(isinstance(mgr_1, Manager))
+print(isinstance(mgr_1, Developer))
+
+print(issubclass(Manager, Employee))
+print(issubclass(Employee, Developer))
+print(issubclass(Developer, Employee))
