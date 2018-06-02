@@ -1,5 +1,7 @@
 import datetime
 
+# dunder methods https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
+
 class Employee:
  
     raise_ammount = 1.02
@@ -16,27 +18,27 @@ class Employee:
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_ammount)
 
-# Dunders are methods surrounded by "__". 
-# __repr__ is an unambiguous representation of an object and should be used for debugging and logging purposes
-# __str__ is a printable representation of the object usually meant for end users.
-
     def __repr__(self):
         return "Employee('{}', '{}', '{}')".format(self.first, self.last, self.pay)
 
     def __str__(self):
-        return '{} - {}'.format(self.fullname(), self.email)        
+        return '{} - {}'.format(self.fullname(), self.email)
+
+# this time we will look at dunder add. 
+    def __add__(self, other):
+        return self.pay + other.pay    
 
 emp1 = Employee('Robertsonn', 'Jabberwalkie', 40000)
 emp2 = Employee('Truely', 'Duely', 50000)
 emp3 = Employee('Susan', 'Smith', 60000)
 
-# print(emp1) will try to find the __str__ first for that object
-# if that is not found it will try to fall back to __repr__.
-print(emp1)    
+print(emp1 + emp2)
+# or
+print(emp1.__add__(emp3)) 
 
-# it is however always possible to print out the __str__ and __repr__ explicitly if needed
-print(repr(emp2))
-print(str(emp3))
-# or we can do
-print(emp1.__repr__())
-print(emp1.__str__())
+# here is how we use it
+# print(1+2)
+# print('a'+'b')
+# this is where it comes from 
+# print(int.__add__(1,2))
+# print(str.__add__('a','b'))
