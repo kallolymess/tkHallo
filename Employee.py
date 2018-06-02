@@ -2,6 +2,10 @@ import datetime
 
 # dunder methods https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
 
+# It helps to look at https://github.com/python/cpython/blob/master/Lib/datetime.py
+# where you can find how python handles the __add__ __str__ and class date
+# included the datetime.py to the repo
+
 class Employee:
  
     raise_ammount = 1.02
@@ -26,7 +30,10 @@ class Employee:
 
 # this time we will look at dunder add. 
     def __add__(self, other):
-        return self.pay + other.pay    
+        return self.pay + other.pay
+
+    def __len__(self):
+        return len(self.fullname())    
 
 emp1 = Employee('Robertsonn', 'Jabberwalkie', 40000)
 emp2 = Employee('Truely', 'Duely', 50000)
@@ -34,11 +41,8 @@ emp3 = Employee('Susan', 'Smith', 60000)
 
 print(emp1 + emp2)
 # or
-print(emp1.__add__(emp3)) 
+print(emp1.__add__(emp3))
 
-# here is how we use it
-# print(1+2)
-# print('a'+'b')
-# this is where it comes from 
-# print(int.__add__(1,2))
-# print(str.__add__('a','b'))
+print(len(emp1))
+
+
