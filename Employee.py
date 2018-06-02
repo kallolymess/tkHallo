@@ -14,18 +14,21 @@ class Employee:
     def email(self):
         return '{}.{}@company.com'.format(self.first, self.last)
 
+# getters, setter : getters are done with @property and @setters are done with @<Variable>.setter
+    @property
     def fullname(self):
         return '{} {}'.format(self.first, self.last)
 
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+
 emp1 = Employee('Robertsonn', 'Jabberwalkie', 40000)
 
-emp1.first = 'Kalipso'
+emp1.fullname = 'Messi Andriotti'
 
 print(emp1.first)
-# if email would have been left as normal Variable (self.email = first + '.' + last + '@company.com') 
-# it would show Robertsonn.Jabberwalkie@company.com instead of Kalipso.Jabberwalkie@company.com
-# if we would have made email into a method then we would 
-# have to use print(emp1.email()) instead of print(emp1.email) 
-# so we turn a method into a variable with @property property Decorator
 print(emp1.email)
-print(emp1.fullname())
+print(emp1.fullname)
