@@ -1,50 +1,35 @@
-courses = ['Math', 'Physics', 'History', 'CompSci', 'Biology']
+# Tuples : they are lists that are not mutable ie. immutable lists
+# what is meant by mutable?
 
-# joining
-courses_str = ' - '.join(courses)
-print(courses_str)
+list1 = ['Math', 'Physics', 'History', 'CompSci', 'Biology']
+list2 = list1
 
-# splitting
-new_list = courses_str.split(' - ')
-print(new_list)
-# for item in courses:
-#     print(item)
+print(list1)
+print(list2)
 
-# Enumerate(pimping the lists with numbers)
-# indexes can be extracted to a seperate variable
-# the start value of the list can be set in python
+list2.append('Art')
+list2[3] = 'Neurobiology'
 
-# for index, course in enumerate(courses, start=2):
-#     print(index, course)
+print(list1)
+print(list2)
 
+# ['Math', 'Physics', 'History', 'CompSci', 'Biology']
+# ['Math', 'Physics', 'History', 'CompSci', 'Biology']
+# ['Math', 'Physics', 'History', 'CompSci', 'Biology', 'Art']
+# ['Math', 'Physics', 'History', 'CompSci', 'Biology', 'Art']
 
-# print(courses.index('History'))
+# Mutable : when we change the value of one list the Mutable list is updated to be exactly like the first
 
-# nums = [11, 2, 9, 88, 4, 32]
+# Tuples are immutable
+tuple1 = ('Math', 'Physics', 'History', 'CompSci', 'Biology')
+tuple2 = tuple1
 
-# print(nums)
-# print(sorted(nums))
-# print(sum(nums))
-# print(min(nums))
-# print(max(nums))
+print(tuple1)
+print(tuple2)
 
-# sorted(courses)
-# print(courses)
-# print(sorted(courses))
-# print(courses)
+# tuple2[4] = 'Chem' Something like this will not function with Tuples cause they are Immutable.
 
-# slicing
-# print(courses[1:2])
-# print(courses[2:])
+print(tuple1)
+print(tuple2)
 
-# courses.append('Art')
-# courses.insert(2, 'Commerce')
-# print(courses)
-# courses.remove('History')
-# print(courses)
-
-# courses.sort()
-# print(courses)
-
-# courses.reverse()
-# print(courses)
+# So tuples are good if we need a list to read and not edit
