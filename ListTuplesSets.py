@@ -1,5 +1,22 @@
 courses = ['Math', 'Physics', 'History', 'CompSci', 'Biology']
 
+# joining
+courses_str = ' - '.join(courses)
+print(courses_str)
+
+# splitting
+new_list = courses_str.split(' - ')
+print(new_list)
+# for item in courses:
+#     print(item)
+
+# Enumerate(pimping the lists with numbers)
+# indexes can be extracted to a seperate variable
+# the start value of the list can be set in python
+
+# for index, course in enumerate(courses, start=2):
+#     print(index, course)
+
 
 # print(courses.index('History'))
 
