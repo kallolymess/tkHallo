@@ -1,35 +1,27 @@
-# Tuples : they are lists that are not mutable ie. immutable lists
-# what is meant by mutable?
+# Sets : Lists that automatically throw away duplicates and is not ordered in any manner
+# they are optimized to work faster for comparision.
 
-list1 = ['Math', 'Physics', 'History', 'CompSci', 'Biology']
-list2 = list1
+set1 = {'His', 'Hers', 'Its', 'Ours', 'Yours', 'Theirs'}
+print(set1)
+set1.add('Hallo')
+print(set1)
+set1.add('Yours')
+print(set1)
 
-print(list1)
-print(list2)
+set2 = {'His', 'Whats', 'Its', 'Up', 'Yours', 'Doc'}
+print(set1.intersection(set2))
+print(set1.difference(set2))
+print(set1.union(set2))
 
-list2.append('Art')
-list2[3] = 'Neurobiology'
+# creating empty sets has a oopsie
+# empty list and tuples can be created in two manners
+emt_list = []
+emt_list = list()
 
-print(list1)
-print(list2)
+emt_tuple = ()
+emt_tuple2 = tuple()
 
-# ['Math', 'Physics', 'History', 'CompSci', 'Biology']
-# ['Math', 'Physics', 'History', 'CompSci', 'Biology']
-# ['Math', 'Physics', 'History', 'CompSci', 'Biology', 'Art']
-# ['Math', 'Physics', 'History', 'CompSci', 'Biology', 'Art']
+# butttt a set can only be created with the explicite call of set()
 
-# Mutable : when we change the value of one list the Mutable list is updated to be exactly like the first
-
-# Tuples are immutable
-tuple1 = ('Math', 'Physics', 'History', 'CompSci', 'Biology')
-tuple2 = tuple1
-
-print(tuple1)
-print(tuple2)
-
-# tuple2[4] = 'Chem' Something like this will not function with Tuples cause they are Immutable.
-
-print(tuple1)
-print(tuple2)
-
-# So tuples are good if we need a list to read and not edit
+emt_set = {}  # This creates a Dictionary instead of a Set
+emt_set1 = set()
